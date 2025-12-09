@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datapac Remote Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .password-box {
+            text-align: center;
+        }
+        input[type="password"] {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .content {
+            display: none;
+        }
+        .link-box {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+        .link-box a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .link-box a:hover {
+            text-decoration: underline;
+        }
+        .phone {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #e7f3ff;
+            border-radius: 4px;
+            font-size: 18px;
+            color: #333;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Datapac Remote Support</h1>
+        
+        <div id="passwordPrompt" class="password-box">
+            <p>Please enter the password to access support resources:</p>
+            <input type="password" id="passwordInput" placeholder="Enter password">
+            <button onclick="checkPassword()">Submit</button>
+            <div id="errorMsg" class="error"></div>
+        </div>
+
+        <div id="mainContent" class="content">
+            <div class="link-box">
+                <a href="https://www.dwservice.net/en/download.html" target="_blank">Setup DWService</a>
+                <p style="margin-top: 10px; color: #666;">Visit the DWService website to download and set up remote support</p>
+            </div>
+
+            <div class="link-box">
+                <a href="https://github.com/datapac/remote-support/raw/main/DWService.exe" download>Download Windows DWService.exe</a>
+                <p style="margin-top: 10px; color: #666;">Direct download of the Windows installer</p>
+            </div>
+
+            <div class="phone">
+                <strong>Call 805-481-1013</strong><br>
+                to establish a remote support session
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('passwordInput').value;
+            if (password === 'help805') {
+                document.getElementById('passwordPrompt').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else {
+                document.getElementById('errorMsg').textContent = 'Incorrect password. Please try again.';
+            }
+        }
+        
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
